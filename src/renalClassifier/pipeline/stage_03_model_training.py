@@ -1,24 +1,25 @@
 from src.renalClassifier.config.configuration import ConfigurationManager
-from src.renalClassifier.components.prepare_base_model import PrepareBaseModel 
+from src.renalClassifier.components.model_training import Training
 from src.renalClassifier import logger
 
-STAGE_NAME = "Stage 02: Prepare Base Model Stage"
+STAGE_NAME = "Stage 03: Model Training Stage"
 
-class PrepareBaseModelTrainingPipeline:
+class ModelTrainingPipeline:
     def __init__(self):
         pass
 
     def main(self):
         config = ConfigurationManager()
-        prepare_base_model_config = config.get_prepare_base_model_config()
-        prepare_base_model = PrepareBaseModel(config=prepare_base_model_config)
-        prepare_base_model.get_base_model()
-        prepare_base_model.update_base_model()
+        training_config = config.get_training_config()
+        training = Training(training_config)
+        training.get_base_model()
+        training.train_valid_generator()
+        training.train()
 
 if __name__ == "__main__":
     try:
         logger.info(f">>>>> stage name: {STAGE_NAME} started <<<<<")
-        obj = PrepareBaseModelTrainingPipeline()
+        obj = ModelTrainingPipeline()
         obj.main()
         logger.info(f">>>>> stage name: {STAGE_NAME} completed!<<<<<\n\nx==========x")
     except Exception as e:
