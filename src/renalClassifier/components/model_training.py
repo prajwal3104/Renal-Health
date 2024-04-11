@@ -87,17 +87,6 @@ class Training:
             steps = self.valid_generator.n // self.valid_generator.batch_size
         )
 
-        self.model_metrics_plot = self.history.history
-        self.model_metrics_plot['accuracy'] = self.model_metrics_plot.pop('acc')
-        self.model_metrics_plot['val_accuracy'] = self.model_metrics_plot.pop('val_acc')
-        self.model_metrics_plot['loss'] = self.model_metrics_plot.pop('loss')
-        self.model_metrics_plot['val_loss'] = self.model_metrics_plot.pop('val_loss')
-        self.model_metrics_plot = pd.DataFrame(self.model_metrics_plot)
-        self.model_metrics_plot.to_csv(self.config.model_metrics_path)
-        self.model_metrics_plot.plot()
-        plt.savefig(self.config.model_metrics_plot_path)
-        plt.close()
-
         self.save_model(
             path = self.config.trained_model_path, 
             model = self.model
