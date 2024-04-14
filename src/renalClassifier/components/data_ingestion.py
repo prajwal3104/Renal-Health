@@ -8,33 +8,33 @@ from src.renalClassifier.entity.config_entity import DataIngestionConfig
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):
         self.config = config
-        
-    def download_file(self) -> str:
-        """
-        Fetch the data from the source URL and store it in the local data path
-        """
 
-        try:
+    
+    def download_file(self)-> str:
+        '''
+        Fetch data from the url
+        '''
+
+        try: 
             dataset_url = self.config.source_URL
-            zip_download_path = self.config.local_data_file
+            zip_download_dir = self.config.local_data_file
 
             # Skip download if file already exists
-            if os.path.exists(zip_download_path):
+            if os.path.exists(zip_download_dir):
                 logger.info(f"Dataset file already exists at {zip_download_path}. Skipping download.")
-                return zip_download_path
-
+                return zip_download_dir
+            
             os.makedirs("artifacts/data_ingestion", exist_ok=True)
-            logger.info(f"Downloading the dataset from {dataset_url} to file {zip_download_path}")
+            logger.info(f"Downloading data from {dataset_url} into file {zip_download_dir}")
 
-            file_id = dataset_url.split('/')[-2]
+            file_id = dataset_url.split("/")[-2]
             prefix = 'https://drive.google.com/uc?/export=download&id='
-            gdown.download(prefix + file_id, zip_download_path)
+            gdown.download(prefix+file_id,zip_download_dir)
 
-            logger.info(f"Downloaded the dataset from {dataset_url} to file {zip_download_path}")
-            return zip_download_path
+            logger.info(f"Downloaded data from {dataset_url} into file {zip_download_dir}")
+            return zip_download_dir
 
         except Exception as e:
-            logger.error(f"Error downloading the dataset from {dataset_url} to file {zip_download_path}")
             raise e
         
 

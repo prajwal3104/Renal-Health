@@ -2,9 +2,9 @@ from src.renalClassifier.config.configuration import ConfigurationManager
 from src.renalClassifier.components.data_ingestion import DataIngestion
 from src.renalClassifier import logger
 
-STAGE_NAME = "Data Ingestion stage"
+STAGE_NAME = "Stage 01: Data Ingestion"
 
-class DataIngestionPipeline:
+class DataIngestionTrainingPipeline:
     def __init__(self):
         pass
 
@@ -20,7 +20,7 @@ class DataIngestionPipeline:
 if __name__ == "__main__":
     try:
         logger.info(f"----> stage {STAGE_NAME} started <----")
-        obj = DataIngestionPipeline()
+        obj = DataIngestionTrainingPipeline()
         obj.main()
         logger.info(f"----> stage {STAGE_NAME} completed <----\n\nX########X")
     except Exception as e:

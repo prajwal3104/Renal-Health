@@ -6,13 +6,13 @@ import matplotlib.pyplot as plt
 import time
 import pandas as pd
 from pathlib import Path
-from src.renalClassifier.entity.config_entity import TrainigConfig
+from src.renalClassifier.entity.config_entity import TrainingConfig
 
 class Training:
-    def __init__(self, config: TrainigConfig):
+    def __init__(self, config: TrainingConfig):
         self.config = config
 
-    
+        
     def get_base_model(self):
         self.model = tf.keras.models.load_model(
             self.config.updated_base_model_path
@@ -62,32 +62,27 @@ class Training:
             **dataflow_kwargs
         )
 
-
+    
     @staticmethod
-    def save_model(path: Path, model: tf.keras.models.Model):
+    def save_model(path: Path, model: tf.keras.Model):
         model.save(path)
 
+
+
+    
     def train(self):
-        self.model.compile(
-            loss = 'categorical_crossentropy',
-            optimizer = 'adam',
-            metrics = ['accuracy']
-        )
+        self.steps_per_epoch = self.train_generator.samples // self.train_generator.batch_size
+        self.validation_steps = self.valid_generator.samples // self.valid_generator.batch_size
 
-        self.history = self.model.fit(
+        self.model.fit(
             self.train_generator,
-            steps_per_epoch = self.train_generator.n // self.train_generator.batch_size,
-            epochs = self.config.params_epochs,
-            validation_data = self.valid_generator,
-            validation_steps = self.valid_generator.n // self.valid_generator.batch_size
-        )
-
-        self.model_metrics = self.model.evaluate(
-            self.valid_generator,
-            steps = self.valid_generator.n // self.valid_generator.batch_size
+            epochs=self.config.params_epochs,
+            steps_per_epoch=self.steps_per_epoch,
+            validation_steps=self.validation_steps,
+            validation_data=self.valid_generator
         )
 
         self.save_model(
-            path = self.config.trained_model_path, 
-            model = self.model
-            )
+            path=self.config.trained_model_path,
+            model=self.model
+        )
