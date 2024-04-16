@@ -1,9 +1,9 @@
 import os
 import zipfile
 import gdown
-from src.renalClassifier import logger
-from src.renalClassifier.utils.common import get_size
-from src.renalClassifier.entity.config_entity import DataIngestionConfig
+from renalClassifier import logger
+from renalClassifier.utils.common import get_size
+from renalClassifier.entity.config_entity import DataIngestionConfig
 
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):

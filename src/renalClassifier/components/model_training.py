@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import time
 import pandas as pd
 from pathlib import Path
-from src.renalClassifier.entity.config_entity import TrainingConfig
+from renalClassifier.entity.config_entity import TrainingConfig
 from keras.models import load_model
 
 class Training:

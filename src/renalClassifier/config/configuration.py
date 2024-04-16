@@ -1,7 +1,7 @@
 import os
-from src.renalClassifier.constants import *
-from src.renalClassifier.utils.common import read_yaml, create_directories, save_json
-from src.renalClassifier.entity.config_entity import (DataIngestionConfig, 
+from renalClassifier.constants import *
+from renalClassifier.utils.common import read_yaml, create_directories, save_json
+from renalClassifier.entity.config_entity import (DataIngestionConfig, 
                                                       PrepareBaseModelConfig, 
                                                       TrainingConfig, 
                                                       EvaluationConfig)

@@ -1,6 +1,6 @@
-from src.renalClassifier.config.configuration import ConfigurationManager
-from src.renalClassifier.components.model_evaluation_mlflow import Evaluation
-from src.renalClassifier import logger
+from renalClassifier.config.configuration import ConfigurationManager
+from renalClassifier.components.model_evaluation_mlflow import Evaluation
+from renalClassifier import logger
 
 STAGE_NAME = "Stage 04: Model Evaluation Stage"
 

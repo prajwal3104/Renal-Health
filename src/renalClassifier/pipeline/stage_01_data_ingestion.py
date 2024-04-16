@@ -1,6 +1,6 @@
-from src.renalClassifier.config.configuration import ConfigurationManager
-from src.renalClassifier.components.data_ingestion import DataIngestion
-from src.renalClassifier import logger
+from renalClassifier.config.configuration import ConfigurationManager
+from renalClassifier.components.data_ingestion import DataIngestion
+from renalClassifier import logger
 
 STAGE_NAME = "Stage 01: Data Ingestion"
 
