@@ -7,6 +7,7 @@ import time
 import pandas as pd
 from pathlib import Path
 from src.renalClassifier.entity.config_entity import TrainingConfig
+from keras.models import load_model
 
 class Training:
     def __init__(self, config: TrainingConfig):
@@ -14,7 +15,7 @@ class Training:
 
         
     def get_base_model(self):
-        self.model = tf.keras.models.load_model(
+        self.model = load_model(
             self.config.updated_base_model_path
         )
 

@@ -21,7 +21,7 @@ class DataIngestion:
 
             # Skip download if file already exists
             if os.path.exists(zip_download_dir):
-                logger.info(f"Dataset file already exists at {zip_download_path}. Skipping download.")
+                logger.info(f"Dataset file already exists at {zip_download_dir}. Skipping download.")
                 return zip_download_dir
             
             os.makedirs("artifacts/data_ingestion", exist_ok=True)
