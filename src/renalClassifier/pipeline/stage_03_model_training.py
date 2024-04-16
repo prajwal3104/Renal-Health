@@ -1,6 +1,6 @@
-from src.renalClassifier.config.configuration import ConfigurationManager
-from src.renalClassifier.components.model_training import Training
-from src.renalClassifier import logger
+from renalClassifier.config.configuration import ConfigurationManager
+from renalClassifier.components.model_training import Training
+from renalClassifier import logger
 
 STAGE_NAME = "Stage 03: Model Training Stage"
 

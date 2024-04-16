@@ -3,8 +3,8 @@ from pathlib import Path
 import mlflow
 import mlflow.keras
 from urllib.parse import urlparse
-from src.renalClassifier.entity.config_entity import EvaluationConfig
-from src.renalClassifier.utils.common import read_yaml, create_directories,save_json
+from renalClassifier.entity.config_entity import EvaluationConfig
+from renalClassifier.utils.common import read_yaml, create_directories,save_json
 
 
 class Evaluation:
