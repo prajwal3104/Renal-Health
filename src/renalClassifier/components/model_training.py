@@ -8,6 +8,8 @@ import pandas as pd
 from pathlib import Path
 from renalClassifier.entity.config_entity import TrainingConfig
 from keras.models import load_model
+from tensorflow.keras.callbacks import EarlyStopping
+
 
 class Training:
     def __init__(self, config: TrainingConfig):
@@ -81,6 +83,12 @@ class Training:
             steps_per_epoch=self.steps_per_epoch,
             validation_steps=self.validation_steps,
             validation_data=self.valid_generator
+        )
+        # Early stopping
+        early_stopping = EarlyStopping(
+            monitor='val_loss',
+            patience=5,
+            restore_best_weights=True
         )
 
         self.save_model(

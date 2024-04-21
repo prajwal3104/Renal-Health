@@ -118,5 +118,5 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2023 [Prajwal](https://github.com/prajwal3104).<br />
-This project is [ISC](LICENCE) licensed.
+Copyright © 2024 [Prajwal](https://github.com/prajwal3104).<br />
+This project is [MIT](LICENCE) licensed.

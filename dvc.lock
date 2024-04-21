@@ -36,12 +36,12 @@ stages:
         - 224
         - 3
         INCLUDE_TOP: false
-        LEARNING_RATE: 0.01
+        LEARNING_RATE: 0.0001
         WEIGHTS: imagenet
     outs:
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: 38a4d0e49b70f31830ad6d5cc049df4b.dir
+      md5: dd6e51809f5f823ad5a03545946f815a.dir
       size: 118258808
       nfiles: 2
   training:
