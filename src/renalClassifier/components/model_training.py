@@ -47,12 +47,12 @@ class Training:
 
         if self.config.params_is_augmentation:
             train_datagenerator = tf.keras.preprocessing.image.ImageDataGenerator(
-                rotation_range=40,
+                rotation_range=20,
                 horizontal_flip=True,
-                width_shift_range=0.2,
-                height_shift_range=0.2,
-                shear_range=0.2,
-                zoom_range=0.2,
+                width_shift_range=0.01,
+                height_shift_range=0.01,
+                shear_range=0.01,
+                zoom_range=0.01,
                 **datagenerator_kwargs
             )
         else:
@@ -87,7 +87,7 @@ class Training:
         # Early stopping
         early_stopping = EarlyStopping(
             monitor='val_loss',
-            patience=5,
+            patience=3,
             restore_best_weights=True
         )
 
